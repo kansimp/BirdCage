@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-import header_img from '../../assets/images/header_img.png';
+import header_img from '../../assets/images/header_img.svg';
 
 const cx = classNames.bind(styles);
 function Home() {
