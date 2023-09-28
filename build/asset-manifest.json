@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/BirdCage/static/css/main.a1913fbc.css",
+    "main.js": "/BirdCage/static/js/main.edce5c7a.js",
+    "static/js/787.37552292.chunk.js": "/BirdCage/static/js/787.37552292.chunk.js",
+    "static/media/header_img.svg": "/BirdCage/static/media/header_img.cf084fae4a856b71902c6172ec89977b.svg",
+    "static/media/Quicksand-Medium.ttf": "/BirdCage/static/media/Quicksand-Medium.9fd398f86ce80d968762.ttf",
+    "static/media/Quicksand-Regular.ttf": "/BirdCage/static/media/Quicksand-Regular.67e7ce07307c681fb49d.ttf",
+    "static/media/Quicksand-Bold.ttf": "/BirdCage/static/media/Quicksand-Bold.bac7ed87f9bcd95a6c55.ttf",
+    "static/media/logo.png": "/BirdCage/static/media/logo.2bc83f671cf70f195622.png",
+    "static/media/github-logo.svg": "/BirdCage/static/media/github-logo.3f801b26372aaec4202e386bb5830854.svg",
+    "static/media/instagram-logo.svg": "/BirdCage/static/media/instagram-logo.0045cfe6f23f58086faabe8f4d481ee8.svg",
+    "index.html": "/BirdCage/index.html",
+    "static/media/facebook-logo.svg": "/BirdCage/static/media/facebook-logo.c31db7e11f0cf6fb0f839bcbcac6b680.svg",
+    "static/media/logo-search.svg": "/BirdCage/static/media/logo-search.904d60efb10a9ed162aeecfe5d0a8e29.svg",
+    "main.a1913fbc.css.map": "/BirdCage/static/css/main.a1913fbc.css.map",
+    "main.edce5c7a.js.map": "/BirdCage/static/js/main.edce5c7a.js.map",
+    "787.37552292.chunk.js.map": "/BirdCage/static/js/787.37552292.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1913fbc.css",
+    "static/js/main.edce5c7a.js"
+  ]
+}
