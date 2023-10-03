@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.scss';
@@ -16,8 +17,12 @@ function Header() {
                 <img src={logo} alt="logo" className={cx('logo')} />
                 {/* <!-- subnav --> */}
                 <div className={cx('subnav')}>
-                    <a href="#!">HOME</a>
-                    <a href="#!">PRODUCTS</a>
+                    <Link to={'/'} className={cx('link')}>
+                        HOME
+                    </Link>
+                    <Link to={'/products'} className={cx('link')}>
+                        PRODUCTS
+                    </Link>
                 </div>
                 {/* <!-- search --> */}
                 <div className={cx('search')}>

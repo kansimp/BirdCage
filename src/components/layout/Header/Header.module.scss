@@ -10,6 +10,7 @@
     height: 80px;
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
+    z-index: 2;
 }
 
 .header__navbar .logo {
@@ -117,7 +118,7 @@
     }
 }
 
-.subnav a {
+.subnav .link {
     display: inline-block;
     padding: 20px 20px;
     color: var(--primary-color);
