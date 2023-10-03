@@ -10,7 +10,7 @@
     height: 80px;
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
-    z-index: 2;
+    z-index: 999;
 }
 
 .header__navbar .logo {
@@ -24,7 +24,7 @@
     align-items: center;
     position: relative;
     margin-right: 8rem;
-    border: 2px solid var(--main-color);
+    // border: 2px solid var(--main-color);
     padding: 5px;
     border-radius: 10px;
 }
