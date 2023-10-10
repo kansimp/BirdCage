@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faNotEqual } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ProductDetail.module.scss';
@@ -35,13 +36,25 @@ function ProductDetail() {
                     <div className={cx('title')}>{product.name}</div>
                     <div className={cx('shop')}>
                         <div className={cx('price')}>{product.price}$</div>
-                        <div className={cx('shopping-cart')}>
-                            <FontAwesomeIcon icon={faCartPlus} className={cx('icon')}></FontAwesomeIcon>
-                            <div className={cx('text_1')}>
-                                <div>ADD TO CART</div>
-                                <div className={cx('free')}>Free delivery to your location</div>
+                        <div className={cx('action')}>
+                            <div className={cx('shopping-cart')}>
+                                <FontAwesomeIcon icon={faCartPlus} className={cx('icon')}></FontAwesomeIcon>
+                                <div className={cx('text_1')}>
+                                    <div>ADD TO CART</div>
+                                    <div className={cx('free')}>Free delivery to your location</div>
+                                </div>
                             </div>
+                            <Link className={cx('shopping-cart')} to={`/compare/${product.id}`}>
+                                <FontAwesomeIcon icon={faNotEqual} className={cx('icon')}></FontAwesomeIcon>
+                                <div className={cx('text_1')}>
+                                    <div>COMPARE WITH OTHER PRODUCTS</div>
+                                    <div className={cx('free')}>Select another product to compare</div>
+                                </div>
+                            </Link>
                         </div>
+                        {/* <Link to={`/compare/${product.id}`} className={cx('compare')}>
+                            so sanh
+                        </Link> */}
                     </div>
                     <div className={cx('description')}>Describe :</div>
                     <div className={cx('des')}>{product.description}</div>
