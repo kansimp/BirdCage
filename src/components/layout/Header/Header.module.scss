@@ -117,6 +117,18 @@
         color: var(--main-color);
     }
 }
+.login .buy-logo .total-quantity {
+    background-color: var(--main-color);
+    border-radius: 50%; /* Đặt border-radius thành 50% để tạo hình tròn */
+    text-align: center;
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    display: inline-block;
+    color: var(--primary-color);
+    margin-left: -6.5px;
+    margin-top: -10px;
+}
 
 .subnav .link {
     display: inline-block;

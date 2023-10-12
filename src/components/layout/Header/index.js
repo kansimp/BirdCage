@@ -5,10 +5,15 @@ import { faCartShopping, faRightToBracket, faUserPlus } from '@fortawesome/free-
 import styles from './Header.module.scss';
 import images from '../../../assets/images';
 import logo from '../../../assets/images/logo.png';
+import { useContext } from 'react';
+import { ShopContext } from '../../../context/Shop-Context';
+import { List } from '../../../pages/Cart/List';
 
 const cx = classNames.bind(styles);
 
 function Header() {
+    const { cartItem, calculateTotalQuantity } = useContext(ShopContext);
+    const totalQuantityInCart = calculateTotalQuantity(cartItem, List());
     return (
         <header className={cx('header')}>
             {/* <!-- navbar --> */}
@@ -45,9 +50,11 @@ function Header() {
                             <FontAwesomeIcon icon={faUserPlus} className={cx('sign-up-icon')}></FontAwesomeIcon>
                         </a>
                     </div>
-                    <a href="#!" className={cx('buy-logo')}>
+                    {/* // Cart */}
+                    <Link to="/Cart" className={cx('buy-logo')}>
                         <FontAwesomeIcon icon={faCartShopping} className={cx('buy-icon')}></FontAwesomeIcon>
-                    </a>
+                        {totalQuantityInCart > 0 && <div className={cx('total-quantity')}>{totalQuantityInCart}</div>}
+                    </Link>
                 </div>
             </nav>
         </header>

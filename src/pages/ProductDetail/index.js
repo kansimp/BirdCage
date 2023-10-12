@@ -2,16 +2,17 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faNotEqual } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ProductDetail.module.scss';
 import images from '../../assets/images';
+import { ShopContext } from '../../context/Shop-Context';
 
 const cx = classNames.bind(styles);
 function ProductDetail() {
     const productID = useParams();
     const [product, setProduct] = useState(null);
-
+    const { addToCart } = useContext(ShopContext);
     useEffect(() => {
         fetch('http://localhost:3000/data')
             .then((res) => res.json())
@@ -39,7 +40,7 @@ function ProductDetail() {
                         <div className={cx('action')}>
                             <div className={cx('shopping-cart')}>
                                 <FontAwesomeIcon icon={faCartPlus} className={cx('icon')}></FontAwesomeIcon>
-                                <div className={cx('text_1')}>
+                                <div className={cx('text_1')} onClick={() => addToCart(product.id)}>
                                     <div>ADD TO CART</div>
                                     <div className={cx('free')}>Free delivery to your location</div>
                                 </div>

@@ -51,44 +51,69 @@ function Compare() {
         return (
             <div className={cx('container')}>
                 <img src={images.product_header} style={{ width: 100 + '%', height: 330 + 'px' }}></img>
+                <div className={cx('title')}> Compare Products</div>
                 <div className={cx('content')}>
-                    <table>
-                        <tr>
-                            <td className={cx('title')}></td>
-                            <td>
+                    <div className={cx('top')}>
+                        <div className={cx('left-top')}>
+                            <div className={cx('name1')}>{p1.name}</div>
+                            <div>
                                 <img src={p1.product_image}></img>
-                            </td>
-                            <td>
+                            </div>
+                        </div>
+                        <div className={cx('divider')}>
+                            <div></div>
+                        </div>
+                        <div className={cx('right-top')}>
+                            <div className={cx('name2')}>{p2.name}</div>
+                            <div>
                                 <img src={p2.product_image}></img>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className={cx('title')}>Name</td>
-                            <td>{p1.name}</td>
-                            <td>{p2.name}</td>
-                        </tr>
-                        <tr>
-                            <td className={cx('title')}>Price</td>
-                            <td>{p1.price}$</td>
-                            <td>{p2.price}$</td>
-                        </tr>
-                        <tr>
-                            <td className={cx('title')}>Description</td>
-                            <td>{p1.description}</td>
-                            <td>{p2.description}</td>
-                        </tr>
-
-                        <tr>
-                            <td className={cx('title')}>Amount</td>
-                            <td>{p1.amount}</td>
-                            <td>{p2.amount}</td>
-                        </tr>
-                        <tr>
-                            <td className={cx('title')}>Guarantee</td>
-                            <td>9 month</td>
-                            <td>9 month</td>
-                        </tr>
-                    </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('bottom')}>
+                        <div className={cx('left-bottom')}>
+                            <div className={cx('description')}>{p1.description}</div>
+                        </div>
+                        <div className={cx('center-bottom')}>
+                            <div className={cx('description')}>Description</div>
+                        </div>
+                        <div className={cx('right-bottom')}>
+                            <div className={cx('description')}>{p2.description}</div>
+                        </div>
+                    </div>
+                    <div className={cx('bottom')}>
+                        <div className={cx('left-bottom')}>
+                            <div>{p1.price}$</div>
+                        </div>
+                        <div className={cx('center-bottom')}>
+                            <div className={cx('text')}>Price</div>
+                        </div>
+                        <div className={cx('right-bottom')}>
+                            <div>{p2.price}$</div>
+                        </div>
+                    </div>
+                    <div className={cx('bottom')}>
+                        <div className={cx('left-bottom')}>
+                            <div>{p1.amount}</div>
+                        </div>
+                        <div className={cx('center-bottom')}>
+                            <div className={cx('text')}>Amount</div>
+                        </div>
+                        <div className={cx('right-bottom')}>
+                            <div>{p2.amount}</div>
+                        </div>
+                    </div>
+                    <div className={cx('bottom')}>
+                        <div className={cx('left-bottom')}>
+                            <div>9 month</div>
+                        </div>
+                        <div className={cx('center-bottom')}>
+                            <div className={cx('text')}>Guarantee</div>
+                        </div>
+                        <div className={cx('right-bottom')}>
+                            <div>9 month</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
