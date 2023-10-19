@@ -5,9 +5,16 @@ import { Link } from 'react-router-dom';
 import styles from './Products.module.scss';
 import images from '../../assets/images';
 import ListProducts from '../../components/layout/ListProducts';
+import ListProductsAscByPrice from '../../components/layout/ListProductsAscByPrice';
+import ListProductsDescByPrice from '../../components/layout/ListProductsDescByPrice';
+import ListProductsAscByName from '../../components/layout/ListProductsAscByName';
+import ListProductsDescByName from '../../components/layout/ListProductsDescByName';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 function Products() {
+    const [index, setIndex] = useState(0);
+    console.log('index', index);
     return (
         <div className={cx('container')}>
             <img src={images.product_header} style={{ width: 100 + '%', height: 330 + 'px' }}></img>
@@ -59,15 +66,54 @@ function Products() {
                 <div className={cx('filter')}>
                     <FontAwesomeIcon icon={faArrowUpAZ} className={cx('icon')}></FontAwesomeIcon>
                     <span className={cx('sortby')}> Sort by :</span>
-                    <div className={cx('btn')}>Name A-Z</div>
-                    <div className={cx('btn')}>Name Z-A</div>
-                    <div className={cx('btn')}>Low to High Price</div>
-                    <div className={cx('btn')}>High to Low Price</div>
+                    <div
+                        className={cx('btn')}
+                        onClick={() => {
+                            setIndex(1);
+                        }}
+                    >
+                        Name A-Z
+                    </div>
+                    <div
+                        className={cx('btn')}
+                        onClick={() => {
+                            setIndex(2);
+                        }}
+                    >
+                        Name Z-A
+                    </div>
+                    <div
+                        className={cx('btn')}
+                        onClick={() => {
+                            setIndex(3);
+                        }}
+                    >
+                        Low to High Price
+                    </div>
+                    <div
+                        className={cx('btn')}
+                        onClick={() => {
+                            setIndex(4);
+                        }}
+                    >
+                        High to Low Price
+                    </div>
                     <div className={cx('btn')}>Wooden Bird Cage</div>
                     <div className={cx('btn')}>Metal Bird Cage</div>
                 </div>
                 {/* list poducts */}
-                <ListProducts />
+                {/* <ListProducts /> */}
+                {index == 0 ? (
+                    <ListProducts />
+                ) : index == 1 ? (
+                    <ListProductsAscByName />
+                ) : index == 2 ? (
+                    <ListProductsDescByName />
+                ) : index == 3 ? (
+                    <ListProductsAscByPrice />
+                ) : (
+                    <ListProductsDescByPrice />
+                )}
                 <div className={cx('pagination')}>
                     <div className={cx('num-btn', 'action')}>1</div>
                     <div className={cx('num-btn')}>2</div>

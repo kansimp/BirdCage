@@ -1,0 +1,19 @@
+.personal-page {
+    text-align: center;
+    color: var(--main-color);
+    font-weight: 600;
+    font-size: 5rem;
+    font-family: 'Playball';
+    position: absolute;
+    top: 160px;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.content {
+    width: 1270px;
+    margin: auto;
+    background-color: #ccc;
+    height: 100vh;
+}

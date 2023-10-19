@@ -6,7 +6,7 @@ let listProducts = [];
 const List = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:3000/data')
+        fetch('http://localhost:8080/api/v1/product')
             .then((res) => res.json())
             .then((product) => {
                 setProducts(product);
@@ -108,10 +108,12 @@ export const ShopContextProvider = (props) => {
             if (cartItem.hasOwnProperty(productId)) {
                 // Lấy số lượng của sản phẩm và giá của sản phẩm từ giỏ hàng và danh sách sản phẩm
                 const productQuantity = cartItem[productId];
-                const product = products.find((p) => p.id === productId);
+
+                const product = products.find((p) => p.id == productId);
 
                 if (product) {
                     // Tính tổng tiền cho sản phẩm và cộng vào tổng số tiền
+
                     total += product.price * productQuantity;
                 }
             }

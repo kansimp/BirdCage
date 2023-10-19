@@ -14,7 +14,7 @@ function ProductDetail() {
     const [product, setProduct] = useState(null);
     const { addToCart } = useContext(ShopContext);
     useEffect(() => {
-        fetch('http://localhost:3000/data')
+        fetch('http://localhost:8080/api/v1/product')
             .then((res) => res.json())
             .then((products) => {
                 const findUser = products.find((p) => {

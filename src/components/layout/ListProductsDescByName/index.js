@@ -1,15 +1,15 @@
 import classNames from 'classnames/bind';
-import styles from './ListProducts.module.scss';
+import styles from './ListProductsDescByName.module.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 let listProducts = [];
-function ListProducts() {
+function ListProductsDescByName() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:8080/api/v1/product')
+        fetch('http://localhost:8080/api/v1/product/getAllOrderByNameDesc')
             .then((res) => res.json())
             .then((product) => {
                 setProducts(product);
@@ -36,4 +36,4 @@ function ListProducts() {
     );
 }
 
-export default ListProducts;
+export default ListProductsDescByName;

@@ -15,6 +15,7 @@ const images = {
     hoa: require('./hoa.png'),
     body_img: require('./body_img.svg').default,
     product_header: require('./product_header.svg').default,
+    messenger: require('./messenger-logo.svg').default,
     longkimloai: require('./longchimkimloai.png'),
     longgo: require('./longbanggo.png'),
     avata: require('./avata.png'),

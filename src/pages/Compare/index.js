@@ -16,7 +16,7 @@ function Compare() {
         if (!selectProduct.includes(productID)) {
             setSelectProduct((prefix) => [...prefix, productID.productID]);
         }
-        fetch('http://localhost:3000/data')
+        fetch('http://localhost:8080/api/v1/product')
             .then((res) => res.json())
             .then((product) => {
                 setProducts(product);
