@@ -9,6 +9,7 @@ import ForgotPassword from '../pages/ForgotPassword';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import UserInfo from '../pages/UserInfo';
 import AdminHome from '../pages/Admin/AdminHome/AdminHome';
+import { Order } from '../pages/Order/Order';
 
 const publicRoute = [
     { path: '/', component: Home, layout: DefaultLayout },
@@ -21,6 +22,7 @@ const publicRoute = [
     { path: '/register', component: RegisterPage, layout: null },
     { path: '/forgot', component: ForgotPassword, layout: null },
     { path: '/admin', component: AdminHome, layout: null },
+    { path: '/order', component: Order, layout: null },
 ];
 
 const privateRoute = [];

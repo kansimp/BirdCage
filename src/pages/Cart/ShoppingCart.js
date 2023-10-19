@@ -23,9 +23,6 @@ export const ShoppingCart = () => {
                 <div className="title">
                     <h1>Shopping Cart </h1>
                     <img src={images.hoa} alt="" />
-                    <Link to="/products" className="Link">
-                        Continue Shopping
-                    </Link>
                 </div>
             </div>
             <div className="cart-page">
@@ -49,8 +46,15 @@ export const ShoppingCart = () => {
                 ) : (
                     // Hiển thị "Giỏ hàng rỗng" nếu không có sản phẩm trong giỏ hàng
                     <div className="empty-cart">
-                        <div>This Cart is Empty</div>
-                        <img src={images.hoa} alt="" />
+                        <img
+                            src="https://theme.hstatic.net/200000551679/1001042568/14/cart_empty_background.png?v=874"
+                            alt="empty cart"
+                        />
+                        <h1>This Cart is Empty</h1>
+                        <h2>Go to the store page to choose to buy products!!</h2>
+                        <Link to={'/products'}>
+                            <button className="btn-shop">Shopping now</button>
+                        </Link>
                     </div>
                 )}
             </div>
@@ -61,7 +65,7 @@ export const ShoppingCart = () => {
                     <span className="value">{total}$</span>
                 </div>
             )}
-            {hasItemsInCart && <button className="btn-checkout"> Check out</button>}
+            <Link to="/Order">{hasItemsInCart && <button className="btn-checkout"> Check out</button>}</Link>
         </div>
     );
 };
