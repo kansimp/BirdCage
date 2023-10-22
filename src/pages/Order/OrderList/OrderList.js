@@ -15,6 +15,7 @@ const OrderList = () => {
     const [productsReady, setProductsReady] = useState(false);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [shipping, setShipping] = useState(0);
 
     useEffect(() => {
         // Gọi API để lấy danh sách sản phẩm
@@ -60,8 +61,7 @@ const OrderList = () => {
 
         setOrderItems(updatedCartItems);
     }, [productsReady]);
-    console.log('oitem', orderItems);
-    console.log(totalPrice);
+    const sum = (a, b) => a + b;
     return (
         <div className={cx('order')}>
             <h2 className={cx('title')}>Order ({totalQuantity} products)</h2>
@@ -93,12 +93,14 @@ const OrderList = () => {
                 </div>
                 <div className={cx('content-footer-ship')}>
                     <span className={cx('content-footer-ship-title')}>Shipping Fee :</span>
-                    <span className={cx('content-footer-ship-price')}>10$</span>
+                    <span className={cx('content-footer-ship-price')}>{totalQuantity >= 3 ? 7 : 0}$</span>
                 </div>
                 <div className={cx('divider')}></div>
                 <div className={cx('content-footer-total')}>
                     <span className={cx('content-footer-total-title')}>Total :</span>
-                    <span className={cx('content-footer-total-price')}>{totalPrice}$</span>
+                    <span className={cx('content-footer-total-price')}>
+                        {sum(totalPrice, totalQuantity >= 3 ? 7 : 0)}$
+                    </span>
                 </div>
                 <div className={cx('content-footer-btn')}>
                     <div className={cx('content-footer-btn-link')}>

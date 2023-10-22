@@ -35,12 +35,10 @@ export const Order = () => {
 
     const handleProvinceChange = (event) => {
         const selectedProvince = event.target.value;
-        console.log('select', selectedProvince);
         setSelectedProvince(selectedProvince);
         setSelectedDistrict('');
         callAPI(`${host}p/${selectedProvince}?depth=2`, 'districts');
     };
-
     const handleDistrictChange = (event) => {
         const selectedDistrict = event.target.value;
         setSelectedDistrict(selectedDistrict);
