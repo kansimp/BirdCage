@@ -1,15 +1,67 @@
 .mes-logo {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     position: fixed;
     right: 2rem;
     bottom: 2rem;
     user-select: none;
+
+    // &:hover .box-chat {
+    //     opacity: 1;
+    //     visibility: visible;
+    // }
+
+    .box-chat {
+        width: 350px;
+        height: 430px;
+        position: absolute;
+        right: 70px;
+        bottom: 20px;
+        user-select: none;
+        border: 3px solid var(--main-color);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s, visibility 0.5s;
+    }
 }
 
 .mes-logo img {
     width: 100%;
     height: 100%;
+    animation: iconSkew 1s infinite ease-out;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    border-radius: 50%;
+    border: 1px solid var(--main-color);
+
+    @keyframes iconSkew {
+        0% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+
+        10% {
+            transform: rotate(-25deg) scale(1) skew(1deg);
+        }
+
+        20% {
+            transform: rotate(25deg) scale(1) skew(1deg);
+        }
+
+        30% {
+            transform: rotate(-25deg) scale(1) skew(1deg);
+        }
+
+        40% {
+            transform: rotate(25deg) scale(1) skew(1deg);
+        }
+
+        50% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+
+        100% {
+            transform: rotate(0deg) scale(1) skew(1deg);
+        }
+    }
 }
 
 .navigate {

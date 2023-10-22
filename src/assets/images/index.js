@@ -8,6 +8,7 @@ const images = {
     support2: require('./support2.png'),
     support3: require('./support3.png'),
     support4: require('./support4.png'),
+    logo: require('./logo.png'),
     longbauduc: require('./longbauduc.png'),
     longhinhvuong: require('./longvuong.png'),
     longdagiac: require('./longdagiac.png'),
