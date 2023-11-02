@@ -20,6 +20,7 @@ const images = {
     longkimloai: require('./longchimkimloai.png'),
     longgo: require('./longbanggo.png'),
     avata: require('./avata.png'),
+    zalo: require('./zalo.png'),
 };
 
 export default images;

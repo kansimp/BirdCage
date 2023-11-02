@@ -10,7 +10,10 @@ import DefaultLayout from '../components/layout/DefaultLayout';
 import UserInfo from '../pages/UserInfo';
 import AdminHome from '../pages/Admin/AdminHome/AdminHome';
 import { Order } from '../pages/Order/Order';
+import ModalSuccess from '../pages/ModalSuccess';
 
+const role = localStorage.getItem('role');
+console.log(role);
 const publicRoute = [
     { path: '/', component: Home, layout: DefaultLayout },
     { path: '/products', component: Products, layout: DefaultLayout },
@@ -21,9 +24,13 @@ const publicRoute = [
     { path: '/login', component: LoginPage, layout: null },
     { path: '/register', component: RegisterPage, layout: null },
     { path: '/forgot', component: ForgotPassword, layout: null },
-    { path: '/admin', component: AdminHome, layout: null },
     { path: '/order', component: Order, layout: null },
+    { path: '/success', component: ModalSuccess, layout: null },
 ];
+
+if (role == 'ADMIN') {
+    publicRoute.push({ path: '/admin', component: AdminHome, layout: null });
+}
 
 const privateRoute = [];
 export { publicRoute, privateRoute };

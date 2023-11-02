@@ -29,6 +29,9 @@ function DefaultLayout({ children }) {
             <Header />
             <div className={cx('content')}>{children}</div>
             <FontAwesomeIcon icon={faArrowsUpToLine} className={cx('navigate')} onClick={scrollToTop}></FontAwesomeIcon>
+            <a href="https://zalo.me/g/pnovni527?fbclid=IwAR0LzCNPIC3WSveXGTqqw-VWyhnWykq5CBfM6z8dhuNT62x3riKvJP0fPWU">
+                <img className={cx('zalo')} src={images.zalo}></img>
+            </a>
             <div className={cx('mes-logo')} onClick={() => setBox(!box)}>
                 <img src={images.logo}></img>
                 <iframe
