@@ -31,7 +31,7 @@ function UserInfo() {
         getAllAddress();
     }, []);
     const getAllAddress = async () => {
-        const res = await axios.get('http://localhost:8080/api/v1/address/getByUserID?id=khoa21062003@gmail.com');
+        const res = await axios.get(`http://localhost:8080/api/v1/address/getByUserID?id=${id}`);
         if (res && res.data) {
             console.log(res.data);
             setAddress(res.data);
