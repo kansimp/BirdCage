@@ -2,8 +2,9 @@ import styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
 import logo from '../../../../assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartSimple, faUser, faCartShopping, faUsers, faCrow } from '@fortawesome/free-solid-svg-icons';
+import { faChartSimple, faUser, faCartShopping, faUsers, faCrow, faComments } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.module.scss';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 const Sidebar = () => {
     return (
@@ -17,27 +18,37 @@ const Sidebar = () => {
             <div className={cx('center')}>
                 <ul>
                     <p className={cx('title')}>MAIN</p>
-                    <li>
-                        <FontAwesomeIcon icon={faChartSimple} className={cx('icon')}></FontAwesomeIcon>
-                        <span>Daskboard</span>
-                    </li>
+                    <Link to={'/admin'}>
+                        <li>
+                            <FontAwesomeIcon icon={faChartSimple} className={cx('icon')}></FontAwesomeIcon>
+                            <span>Dashboard</span>
+                        </li>
+                    </Link>
                     <p className={cx('title')}>SERVICE</p>
-                    <li>
-                        <FontAwesomeIcon icon={faUsers} className={cx('icon')}></FontAwesomeIcon>
-                        <span>Customer</span>
-                    </li>
-                    <li>
-                        <FontAwesomeIcon icon={faCartShopping} className={cx('icon')}></FontAwesomeIcon>
-                        <span>Order</span>
-                    </li>
-                    <li>
-                        <FontAwesomeIcon icon={faCrow} className={cx('icon')}></FontAwesomeIcon>
-                        <span>Products</span>
-                    </li>
-                    <li>
-                        <FontAwesomeIcon icon={faUser} className={cx('icon')}></FontAwesomeIcon>
-                        <span>Account</span>
-                    </li>
+                    <Link to={'/admin/customer'}>
+                        <li>
+                            <FontAwesomeIcon icon={faUsers} className={cx('icon')}></FontAwesomeIcon>
+                            <span>Customer</span>
+                        </li>
+                    </Link>
+                    <Link to={'/adminorder'}>
+                        <li>
+                            <FontAwesomeIcon icon={faCartShopping} className={cx('icon')}></FontAwesomeIcon>
+                            <span>Order</span>
+                        </li>
+                    </Link>
+                    <Link to={'/admin/products'}>
+                        <li>
+                            <FontAwesomeIcon icon={faCrow} className={cx('icon')}></FontAwesomeIcon>
+                            <span>Products</span>
+                        </li>
+                    </Link>
+                    <Link to={'/admin/comment'}>
+                        <li>
+                            <FontAwesomeIcon icon={faComments} className={cx('icon')}></FontAwesomeIcon>
+                            <span>Comment</span>
+                        </li>
+                    </Link>
                 </ul>
             </div>
         </div>

@@ -10,7 +10,13 @@ import DefaultLayout from '../components/layout/DefaultLayout';
 import UserInfo from '../pages/UserInfo';
 import AdminHome from '../pages/Admin/AdminHome/AdminHome';
 import { Order } from '../pages/Order/Order';
-
+import OrderSucess from '../pages/Order/OrderSucess/OrderSucess';
+import AdminOrder from '../pages/Admin/Order/Order';
+import ModalSuccess from '../pages/ModalSuccess';
+import ProductsList from '../pages/Admin/ProductsList/ProductsList';
+import CustomerList from '../pages/Admin/CustomerList/CustomerList';
+import { Comment } from '../pages/Admin/Comment/Comment';
+const role = localStorage.getItem('role');
 const publicRoute = [
     { path: '/', component: Home, layout: DefaultLayout },
     { path: '/products', component: Products, layout: DefaultLayout },
@@ -21,9 +27,16 @@ const publicRoute = [
     { path: '/login', component: LoginPage, layout: null },
     { path: '/register', component: RegisterPage, layout: null },
     { path: '/forgot', component: ForgotPassword, layout: null },
-    { path: '/admin', component: AdminHome, layout: null },
     { path: '/order', component: Order, layout: null },
+    { path: '/ordersucess', component: OrderSucess, layout: null },
+    { path: '/success', component: ModalSuccess, layout: null },
 ];
-
+if (role == 'ADMIN') {
+    publicRoute.push({ path: '/admin', component: AdminHome, layout: null });
+    publicRoute.push({ path: '/adminorder', component: AdminOrder, layout: null });
+    publicRoute.push({ path: '/admin/products', component: ProductsList, layout: null });
+    publicRoute.push({ path: '/admin/customer', component: CustomerList, layout: null });
+    publicRoute.push({ path: '/admin/comment', component: Comment, layout: null });
+}
 const privateRoute = [];
 export { publicRoute, privateRoute };

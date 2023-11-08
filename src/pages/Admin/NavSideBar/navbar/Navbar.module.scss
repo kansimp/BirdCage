@@ -11,25 +11,7 @@
         width: 100%;
         padding: 20px;
         align-items: center;
-        justify-content: space-between;
-        .search {
-            display: flex;
-            align-items: center;
-            border: 0.5px solid rgb(159, 158, 158);
-            border-radius: 10px;
-            padding: 3px;
-
-            input {
-                border: none;
-                outline: none;
-                background: transparent;
-                width: 25em;
-                &::placeholder {
-                    font-size: 13px;
-                    padding-left: 8px;
-                }
-            }
-        }
+        justify-content: flex-end;
         .user-items {
             display: flex;
             align-items: center;

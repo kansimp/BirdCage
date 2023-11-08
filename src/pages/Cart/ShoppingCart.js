@@ -39,7 +39,7 @@ export const ShoppingCart = () => {
                 {hasItemsInCart ? (
                     // Hiển thị danh sách sản phẩm nếu có sản phẩm trong giỏ hàng
                     productArray.map((product) => {
-                        if (cartItem[product.id]) {
+                        if (cartItem.some((item) => item.id === product.id)) {
                             return <CartItem data={product} />;
                         }
                     })

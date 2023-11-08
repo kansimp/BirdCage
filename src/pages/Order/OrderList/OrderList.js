@@ -26,42 +26,43 @@ const OrderList = () => {
 
         // Lấy dữ liệu từ Local Storage
         const cartData = JSON.parse(localStorage.getItem('shopCart'));
-        console.log('cartData', cartData);
 
         const updatedCartItems = [];
         let totalQuantity = 0;
         let totalPrice = 0;
         //  truy xuất thông tin nếu dữ liệu  true
         if (productsReady) {
-            for (const productId in cartData) {
-                if (cartData.hasOwnProperty(productId)) {
-                    const product = products.find((p) => p.id == productId);
-                    console.log('productss', product);
-                    if (product) {
-                        const quantity = cartData[productId];
-                        const totalproductPrice = product.price * quantity;
-                        // console.log(totalproductPrice);
-                        setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + quantity);
-                        setTotalPrice((prevTotalPrice) => prevTotalPrice + totalproductPrice);
+            for (const item of cartData) {
+                const productId = item.id;
+                const quantity = item.value;
+                const product = products.find((p) => p.id === productId);
+                if (product) {
+                    const totalproductPrice = product.price * quantity;
 
-                        updatedCartItems.push({
-                            id: productId,
-                            name: product.name,
-                            price: product.price,
-                            quantity,
-                            totalproductPrice,
-                            image: product.product_image,
-                        });
-                        console.log('price', updatedCartItems.price);
-                    }
+                    setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + quantity);
+                    setTotalPrice((prevTotalPrice) => prevTotalPrice + totalproductPrice);
+
+                    updatedCartItems.push({
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        quantity,
+                        totalproductPrice,
+                        image: product.product_image,
+                    });
                 }
             }
         }
 
         setOrderItems(updatedCartItems);
     }, [productsReady]);
-    console.log('oitem', orderItems);
-    console.log(totalPrice);
+    let ship = 0;
+    if (totalQuantity >= 3) {
+        ship = 0;
+    } else {
+        ship = 7;
+    }
+    console.log('order', orderItems);
     return (
         <div className={cx('order')}>
             <h2 className={cx('title')}>Order ({totalQuantity} products)</h2>
@@ -93,24 +94,12 @@ const OrderList = () => {
                 </div>
                 <div className={cx('content-footer-ship')}>
                     <span className={cx('content-footer-ship-title')}>Shipping Fee :</span>
-                    <span className={cx('content-footer-ship-price')}>10$</span>
+                    <span className={cx('content-footer-ship-price')}>{totalQuantity >= 3 ? '0$' : '7$'}</span>
                 </div>
                 <div className={cx('divider')}></div>
                 <div className={cx('content-footer-total')}>
                     <span className={cx('content-footer-total-title')}>Total :</span>
-                    <span className={cx('content-footer-total-price')}>{totalPrice}$</span>
-                </div>
-                <div className={cx('content-footer-btn')}>
-                    <div className={cx('content-footer-btn-link')}>
-                        <Link to={'/Cart'} className={cx('content-footer-btn-link-title')}>
-                            <span className={cx('content-footer-btn-link-icon')}>
-                                <FontAwesomeIcon icon={faAnglesLeft} />
-                            </span>
-                            Back to cart
-                        </Link>
-                    </div>
-
-                    <button className={cx('content-footer-btn-order')}>Order</button>
+                    <span className={cx('content-footer-total-price')}>{totalPrice + ship}$</span>
                 </div>
             </div>
         </div>

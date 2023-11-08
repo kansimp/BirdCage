@@ -120,11 +120,7 @@ function RegisterPage() {
                 <div className={styles['form-value']}>
                     <form onSubmit={handleSubmit}>
                         <h2>Create an Account</h2>
-                        {registrationSuccess && (
-                            <div className={styles['success-message']}>
-                                Register success! You can now <Link to={'/login'}>LOGIN HERE</Link>.
-                            </div>
-                        )}
+                        {registrationSuccess && (window.location.href = '/success')}
                         {registrationFail && (
                             <div className={styles['fail-message']}>Registration failed. Please try again.</div>
                         )}

@@ -21,13 +21,14 @@ const List = () => {
 var Listlenght = 0;
 const getDefaultCart = () => {
     Listlenght = List().length;
-    console.log('Listlenght', Listlenght);
-    let cart = {};
-    for (let i = 1; i < Listlenght + 1; i++) {
-        cart[i] = 0;
+    let cart = [];
+
+    for (let i = 1; i <= Listlenght; i++) {
+        cart.push({ id: i, value: 0 });
     }
     return cart;
 };
+
 // lay du lieu ra và đẩy ra
 const DefaultCart = () => {
     const cartItem = localStorage.getItem('shopCart');
@@ -42,54 +43,41 @@ export const ShopContextProvider = (props) => {
     }, [cartItem]);
     const addToCart = (productID) => {
         setcartItem((prevCart) => {
-            // Sao chép giỏ hàng hiện tại để tránh thay đổi trực tiếp
-            const updatedCart = { ...prevCart };
+            const updatedCart = prevCart.map((item) => {
+                if (item.id === productID) {
+                    return { ...item, value: item.value + 1 };
+                }
+                return item;
+            });
 
-            // Kiểm tra xem productID đã có trong giỏ hàng chưa
-            if (updatedCart[productID]) {
-                updatedCart[productID] += 1; // Tăng số lượng nếu sản phẩm đã có trong giỏ hàng
-                console.log(`Sản phẩm với ID ${productID} đã được thêm vào giỏ hàng.`);
-            } else {
-                updatedCart[productID] = 1; // Thêm sản phẩm vào giỏ hàng nếu chưa có
+            // Nếu sản phẩm không tồn tại trong giỏ hàng, thêm mới
+            if (!updatedCart.some((item) => item.id === productID)) {
+                updatedCart.push({ id: productID, value: 1 });
             }
 
             return updatedCart;
         });
     };
-    // hảm giảm số lượng từ cart
     const removeFromCart = (productID) => {
         setcartItem((prevCart) => {
-            // Sao chép giỏ hàng hiện tại để tránh thay đổi trực tiếp
-            const updatedCart = { ...prevCart };
-
-            // Kiểm tra xem productID có có trong giỏ hàng không
-            if (updatedCart[productID]) {
-                if (updatedCart[productID] === 1) {
-                    // Nếu số lượng sản phẩm là 1, loại bỏ sản phẩm khỏi giỏ hàng
-                    delete updatedCart[productID];
-                } else {
-                    // Giảm số lượng sản phẩm đi 1 nếu số lượng lớn hơn 1
-                    updatedCart[productID] -= 1;
+            const updatedCart = prevCart.map((item) => {
+                if (item.id === productID) {
+                    return { ...item, value: item.value - 1 };
                 }
-            } else {
-                console.log(`Sản phẩm với ID ${productID} không có trong giỏ hàng.`);
-            }
+                return item;
+            });
 
-            return updatedCart;
+            // Loại bỏ sản phẩm khỏi giỏ hàng nếu số lượng là 0 hoặc dưới 0
+            return updatedCart.filter((item) => item.value > 0);
         });
     };
     // hàm xóa luôn sản phẩm ra giỏ
     const deleteFromCart = (productID) => {
         setcartItem((prevCart) => {
-            // Sao chép giỏ  hiện tại để tránh thay đổi trực tiếp
-            const updatedCart = { ...prevCart };
+            const updatedCart = prevCart.filter((item) => item.id !== productID); // Sử dụng filter để loại bỏ sản phẩm với productID khỏi giỏ hàng
 
-            // Kiểm tra xem productID có  trong giỏ  không
-            if (updatedCart[productID]) {
-                // Xóa sản phẩm khỏi giỏ
-                delete updatedCart[productID];
-            } else {
-                console.log(`Sản phẩm với ID ${productID} không có trong giỏ .`);
+            if (updatedCart.length === prevCart.length) {
+                console.log(`Sản phẩm với ID ${productID} không có trong giỏ.`);
             }
 
             return updatedCart;
@@ -97,43 +85,40 @@ export const ShopContextProvider = (props) => {
     };
     // cập nhật số lượng sản phẩm
     const updateCartItemQuantity = (newQuantity, productID) => {
-        setcartItem((prevCart) => ({ ...prevCart, [productID]: newQuantity }));
+        setcartItem((prevCart) => {
+            const updatedCart = prevCart.map((item) => {
+                if (item.id === productID) {
+                    return { ...item, value: newQuantity };
+                }
+                return item;
+            });
+
+            return updatedCart;
+        });
     };
     // tính tổng
     const calculateTotalPrice = (cartItem, products) => {
         let total = 0;
 
-        // Lặp qua tất cả các sản phẩm trong giỏ hàng
-        for (const productId in cartItem) {
-            if (cartItem.hasOwnProperty(productId)) {
-                // Lấy số lượng của sản phẩm và giá của sản phẩm từ giỏ hàng và danh sách sản phẩm
-                const productQuantity = cartItem[productId];
+        // Lặp qua tất cả sản phẩm trong giỏ hàng
+        for (const item of cartItem) {
+            const product = products.find((p) => p.id === item.id);
 
-                const product = products.find((p) => p.id == productId);
-
-                if (product) {
-                    // Tính tổng tiền cho sản phẩm và cộng vào tổng số tiền
-
-                    total += product.price * productQuantity;
-                }
+            if (product) {
+                // Tính tổng tiền cho sản phẩm và cộng vào tổng số tiền
+                total += product.price * item.value;
             }
         }
 
         return total;
     };
     //  Tính tổng số lượng tất cả sản phẩm có trong giỏ
-    const calculateTotalQuantity = (cartItem, products) => {
+    const calculateTotalQuantity = (cartItem) => {
         let totalQuantity = 0;
 
-        // Lặp qua tất cả các sản phẩm trong giỏ hàng
-        for (const productId in cartItem) {
-            if (cartItem.hasOwnProperty(productId)) {
-                // Lấy số lượng của sản phẩm từ giỏ hàng
-                const productQuantity = cartItem[productId];
-
-                // Cộng số lượng sản phẩm vào tổng số lượng
-                totalQuantity += productQuantity;
-            }
+        // Lặp qua tất cả sản phẩm trong giỏ hàng
+        for (const item of cartItem) {
+            totalQuantity += item.value;
         }
 
         return totalQuantity;

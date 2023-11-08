@@ -29,13 +29,16 @@ function DefaultLayout({ children }) {
             <Header />
             <div className={cx('content')}>{children}</div>
             <FontAwesomeIcon icon={faArrowsUpToLine} className={cx('navigate')} onClick={scrollToTop}></FontAwesomeIcon>
+            <a href="https://zalo.me/g/pnovni527?fbclid=IwAR0LzCNPIC3WSveXGTqqw-VWyhnWykq5CBfM6z8dhuNT62x3riKvJP0fPWU">
+                <img className={cx('zalo')} src={images.zalo}></img>
+            </a>
             <div className={cx('mes-logo')} onClick={() => setBox(!box)}>
                 <img src={images.logo}></img>
                 <iframe
                     width="350"
                     height="430"
                     allow="microphone;"
-                    src="https://console.dialogflow.com/api-client/demo/embedded/c7bef4d3-f061-42eb-9f39-c0927404f872"
+                    src="https://console.dialogflow.com/api-client/demo/embedded/76faa69f-514a-4991-a469-7c160d04a57b"
                     className={cx('box-chat')}
                     style={style}
                 ></iframe>

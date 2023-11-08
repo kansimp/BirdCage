@@ -88,9 +88,10 @@ function LoginPage() {
                 localStorage.setItem('username', response.data.body.username);
                 const token = response.data.body.access_token;
                 const role = parseJwt(token).roles[0];
+                localStorage.setItem('role', role);
                 const id = parseJwt(token).sub;
                 localStorage.setItem('id', id);
-                if (role == 'ROLE_USER') {
+                if (role == 'USER') {
                     window.location.href = '/';
                 } else {
                     window.location.href = '/admin';

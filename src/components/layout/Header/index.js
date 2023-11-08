@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 function Header() {
     const { cartItem, calculateTotalQuantity } = useContext(ShopContext);
-    const totalQuantityInCart = calculateTotalQuantity(cartItem, List());
+    const totalQuantityInCart = calculateTotalQuantity(cartItem);
     const token = localStorage.getItem('access_token');
     return (
         <header className={cx('header')}>
@@ -48,7 +48,7 @@ function Header() {
                                 <FontAwesomeIcon icon={faUser} className={cx('user-icon')}></FontAwesomeIcon>
                                 <div className={cx('user-choose')}>
                                     <Link to={'/info'} className={cx('info')}>
-                                        Infomation
+                                        Information
                                     </Link>
                                     <Link
                                         to={'/login'}

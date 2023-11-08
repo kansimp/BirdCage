@@ -8,10 +8,6 @@ const Navbar = () => {
     return (
         <div className={cx('navbar')}>
             <div className={cx('wrapper')}>
-                <div className={cx('search')}>
-                    <input type="text" placeholder="Search..." />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </div>
                 <div className={cx('user-items')}>
                     <div className={cx('user-item')}>
                         <FontAwesomeIcon icon={faBell} className={cx('icon')} />

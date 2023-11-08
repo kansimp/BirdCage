@@ -20,6 +20,12 @@ const images = {
     longkimloai: require('./longchimkimloai.png'),
     longgo: require('./longbanggo.png'),
     avata: require('./avata.png'),
+    zalo: require('./zalo.png'),
+    sucess: require('./sucess.png'),
+    iron: require('./iron.png'),
+    wood: require('./wood.png'),
+    thankyou: require('./thankyou.gif'),
+    giohangonl: require('./giohangonl.png'),
 };
 
 export default images;

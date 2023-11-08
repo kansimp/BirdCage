@@ -1,8 +1,13 @@
 .sidebar {
-    flex: 1;
+    // flex: 1;
     border-right: 0.2px solid rgb(216, 211, 211);
     min-height: 100vh;
     background-color: rgb(28, 37, 54);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 256px;
+
     .top {
         // background-color: aqua;
         height: 120px;
