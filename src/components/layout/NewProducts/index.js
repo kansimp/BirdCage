@@ -17,7 +17,7 @@ function NewProducts() {
             });
     }, []);
     if (products.length > 0) {
-        productsSale = products.filter((p, index) => p.id >= 20 && p.id <= 29);
+        productsSale = products.filter((p, index) => p.id >= 24 && p.id <= 33);
     }
     return (
         <div className={cx('container')}>

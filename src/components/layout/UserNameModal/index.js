@@ -14,6 +14,7 @@ function UserNameModal() {
     const handleShow = () => setShow(true);
 
     const handleAdd = async () => {
+        localStorage.setItem('username', value);
         fetch(
             `http://localhost:8080/api/v1/user/change-profile?token=${token}&username=${value}&oldPassword=&password=`,
         );

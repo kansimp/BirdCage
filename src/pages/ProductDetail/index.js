@@ -1,17 +1,23 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faNotEqual } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faNotEqual, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ProductDetail.module.scss';
 import images from '../../assets/images';
 import { ShopContext } from '../../context/Shop-Context';
+import { async } from 'q';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function ProductDetail() {
+    const navigate = useNavigate();
     const productID = useParams();
     const [product, setProduct] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [cmt, setCmt] = useState('');
     const { addToCart } = useContext(ShopContext);
     useEffect(() => {
         fetch('http://localhost:8080/api/v1/product')
@@ -24,10 +30,30 @@ function ProductDetail() {
                     setProduct(findUser);
                 }
             });
+        axios.get(`http://localhost:8080/api/v1/comment?id=${productID.productID}`).then((res) => {
+            if (res && res.data) {
+                setComments(res.data);
+            }
+        });
     }, [productID]);
+
+    console.log('cmt', comments);
     if (!product) {
         return <div>This product is not found</div>;
     }
+    const handleClick = async () => {
+        setCmt('');
+        let data = {
+            userid: localStorage.getItem('id'),
+            productitemid: productID.productID,
+            content: cmt,
+        };
+        await axios.post('http://localhost:8080/api/v1/comment/add', data).then((res) => {
+            // window.location.href = `/product/${productID.productID}`;
+            navigate(`/product/${productID.productID}`);
+        });
+    };
+
     return (
         <div className={cx('container')}>
             <img src={images.product_header} style={{ width: 100 + '%', height: 330 + 'px' }}></img>
@@ -88,6 +114,40 @@ function ProductDetail() {
                                 <p className={cx('des')}>Payment upon delivery, bank transfer, momo,...</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('list-comments')}>
+                <div className={cx('title')}>Comments</div>
+                <div className={cx('comments')}>
+                    {comments.length > 0 &&
+                        comments.map((comment, index) => {
+                            return (
+                                <div className={cx('comment')} key={index}>
+                                    <div className={cx('info')}>
+                                        <div className={cx('avata')}>
+                                            <img src={images.avata} alt="" />
+                                        </div>
+                                        <div className={cx('name')}>{localStorage.getItem('username')}</div>
+                                    </div>
+                                    <div className={cx('cmt')}>{comment.content}</div>
+                                    <div className={cx('time')}>{comment.commentdate.split('T00:00:00')}</div>
+                                </div>
+                            );
+                        })}
+                </div>
+                <textarea
+                    className={cx('input')}
+                    value={cmt}
+                    type="text"
+                    placeholder="Enter your comment"
+                    onChange={(e) => {
+                        setCmt(e.target.value);
+                    }}
+                />
+                <div className={cx('Btn')}>
+                    <div className={cx('btn')} onClick={handleClick}>
+                        Send
                     </div>
                 </div>
             </div>
