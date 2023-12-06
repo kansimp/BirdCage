@@ -11,6 +11,7 @@ import UserInfo from '../pages/UserInfo';
 import AdminHome from '../pages/Admin/AdminHome/AdminHome';
 import { Order } from '../pages/Order/Order';
 import ModalSuccess from '../pages/ModalSuccess';
+import OrderHistory from '../pages/OrderHistory';
 
 const role = localStorage.getItem('role');
 console.log(role);
@@ -21,6 +22,7 @@ const publicRoute = [
     { path: '/compare/:productID', component: Compare, layout: DefaultLayout },
     { path: '/Cart', component: ShoppingCart, layout: DefaultLayout },
     { path: '/info', component: UserInfo, layout: UserInfo },
+    { path: '/history', component: OrderHistory, layout: UserInfo },
     { path: '/login', component: LoginPage, layout: null },
     { path: '/register', component: RegisterPage, layout: null },
     { path: '/forgot', component: ForgotPassword, layout: null },

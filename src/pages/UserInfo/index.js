@@ -8,6 +8,7 @@ import axios from 'axios';
 import UserNameModal from '../../components/layout/UserNameModal';
 import PassWordModal from '../../components/layout/PassWordModal';
 import AddressModal from '../../components/layout/AddressModal';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 const id = localStorage.getItem('id');
@@ -71,6 +72,12 @@ function UserInfo() {
                         <span className={cx('title')}>PassWord</span>
                         <span className={cx('des')}>********</span>
                         <PassWordModal />
+                    </div>
+                    <div className={cx('myrow')}>
+                        <span className={cx('title')}>Order History</span>
+                        <Link className={cx('des', 'link')} to={'/history'}>
+                            View oder history
+                        </Link>
                     </div>
                     <span className={cx('title1')}>Address</span>
                     <div className={cx('myrow1')}>
